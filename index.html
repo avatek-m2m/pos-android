@@ -106,9 +106,21 @@
                 <h1 class="text-2xl font-bold text-gray-800 mt-2">Simulador de Configuração Android</h1>
                 <p class="text-gray-500 mt-2">Siga a simulação ao lado para configurar o seu POS.</p>
             </div>
-            <div class="mt-8">
-                <label for="operator-select" class="block text-sm font-medium text-gray-700">1. Selecione a operadora</label>
-                <select id="operator-select" class="mt-2 block w-full pl-3 pr-10 py-3 text-base bg-slate-100 border-2 border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-lg"><option value="">Escolha uma operadora...</option><option value="vivo">Vivo</option><option value="claro">Claro</option><option value="tim">TIM</option><option value="nlt">NLT</option><option value="linksfield">Linksfield</option><option value="emnify">Emnify</option><option value="eseye">ESEYE</option><option value="vivo_bl">Vivo Banda Larga</option><option value="claro_bl">Claro Banda Larga</option><option value="tim_bl">TIM Banda Larga</option></select>
+            <div class="mt-8 relative">
+                <label for="operator-select-button" class="block text-sm font-medium text-gray-700">1. Selecione a operadora</label>
+                <!-- Botão do Dropdown Customizado -->
+                <button id="operator-select-button" class="mt-2 flex items-center justify-between w-full pl-3 pr-2 py-2 text-base bg-slate-100 border-2 border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-lg">
+                    <span id="selected-operator-label" class="flex items-center">
+                        <span class="text-gray-500">Escolha uma operadora...</span>
+                    </span>
+                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <!-- Lista de Opções do Dropdown -->
+                <div id="operator-options" class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm hidden">
+                    <!-- As opções serão geradas pelo JavaScript -->
+                </div>
             </div>
             <div id="config-details" class="mt-8 hidden">
                 <h2 class="text-lg font-semibold text-gray-800">2. Dados para configuração</h2>
@@ -129,7 +141,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const operatorSelect = document.getElementById('operator-select');
             const configDetails = document.getElementById('config-details');
             const screens = document.querySelectorAll('.screen-view');
             const screenHome = document.getElementById('screen-home');
@@ -163,6 +174,24 @@
             const qrcodeContainer = document.getElementById('qrcode-container');
             const qrcodeImage = document.getElementById('qrcode-image');
 
+            // --- Dropdown Customizado ---
+            const operatorSelectButton = document.getElementById('operator-select-button');
+            const selectedOperatorLabel = document.getElementById('selected-operator-label');
+            const operatorOptions = document.getElementById('operator-options');
+
+            const operatorInfo = {
+                vivo: { label: 'Vivo', logo: 'https://logo.clearbit.com/vivo.com.br' },
+                claro: { label: 'Claro', logo: 'https://logo.clearbit.com/claro.com.br' },
+                tim: { label: 'TIM', logo: 'https://logo.clearbit.com/tim.com.br' },
+                nlt: { label: 'NLT', logo: 'https://logo.clearbit.com/nlt.com.br' },
+                linksfield: { label: 'Linksfield', logo: 'https://logo.clearbit.com/linksfield.com.br' },
+                emnify: { label: 'Emnify', logo: 'https://logo.clearbit.com/emnify.com' },
+                eseye: { label: 'ESEYE', logo: 'https://logo.clearbit.com/eseye.com.br' },
+                vivo_bl: { label: 'Vivo Banda Larga', logo: 'https://logo.clearbit.com/vivo.com.br' },
+                claro_bl: { label: 'Claro Banda Larga', logo: 'https://logo.clearbit.com/claro.com.br' },
+                tim_bl: { label: 'TIM Banda Larga', logo: 'https://logo.clearbit.com/tim.com.br' }
+            };
+
             const apnData = {
                 vivo: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' },
                 claro: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' },
@@ -183,7 +212,6 @@
             function highlightElements(elements) {
                 activeClickableElements.forEach(el => el.classList.remove('clickable-item'));
                 activeClickableElements = [];
-
                 if (elements) {
                     const elementsArray = Array.isArray(elements) ? elements : [elements];
                     elementsArray.forEach(el => {
@@ -214,15 +242,13 @@
                 btnSettingsIcon.firstElementChild.classList.remove('bg-blue-500');
                 btnSettingsIcon.firstElementChild.classList.add('bg-gray-500');
                 homeMessage.textContent = 'Selecione uma operadora ao lado para iniciar a simulação.';
+                selectedOperatorLabel.innerHTML = `<span class="text-gray-500">Escolha uma operadora...</span>`;
             }
 
-            resetSimulation();
-
-            operatorSelect.addEventListener('change', function() {
-                const selectedOperator = this.value;
+            function handleOperatorSelection(operatorKey) {
                 resetSimulation();
-                if (selectedOperator && apnData[selectedOperator]) {
-                    currentApnData = apnData[selectedOperator];
+                if (operatorKey && apnData[operatorKey]) {
+                    currentApnData = apnData[operatorKey];
                     simulationActive = true;
                     
                     btnSettingsIcon.style.cursor = 'pointer';
@@ -237,16 +263,54 @@
                     apnPassword.textContent = currentApnData.password;
                     configDetails.classList.remove('hidden');
 
-                    const isEseye = selectedOperator === 'eseye';
+                    const isEseye = operatorKey === 'eseye';
                     const qrCodeUrl = isEseye
                         ? 'https://raw.githubusercontent.com/vmacagnani/pos-android/main/QRCodeESEYE.jpg'
                         : 'https://raw.githubusercontent.com/vmacagnani/pos-android/main/QRCode1.jpeg';
                     
                     qrcodeImage.src = qrCodeUrl;
                     qrcodeContainer.classList.remove('hidden');
+
+                    // Update dropdown button label
+                    const info = operatorInfo[operatorKey];
+                    selectedOperatorLabel.innerHTML = `
+                        <img src="${info.logo}" alt="${info.label}" class="h-5 w-5 mr-2 rounded-full" onerror="this.style.display='none'">
+                        <span>${info.label}</span>`;
+                }
+            }
+
+            // --- Inicialização ---
+            resetSimulation();
+
+            // Gerar opções do dropdown
+            Object.keys(operatorInfo).forEach(key => {
+                const info = operatorInfo[key];
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('px-4', 'py-2', 'hover:bg-gray-100', 'cursor-pointer', 'flex', 'items-center');
+                optionElement.dataset.value = key;
+                optionElement.innerHTML = `
+                    <img src="${info.logo}" alt="${info.label}" class="h-5 w-5 mr-2 rounded-full" onerror="this.style.display='none'">
+                    <span>${info.label}</span>
+                `;
+                optionElement.addEventListener('click', () => {
+                    handleOperatorSelection(key);
+                    operatorOptions.classList.add('hidden');
+                });
+                operatorOptions.appendChild(optionElement);
+            });
+
+            // Eventos do Dropdown
+            operatorSelectButton.addEventListener('click', () => {
+                operatorOptions.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!operatorSelectButton.contains(e.target) && !operatorOptions.contains(e.target)) {
+                    operatorOptions.classList.add('hidden');
                 }
             });
 
+            // --- Navegação da Simulação ---
             btnSettingsIcon.addEventListener('click', () => simulationActive && navigateTo(screenSettings, btnConnections));
             btnConnections.addEventListener('click', () => simulationActive && navigateTo(screenConnections, btnMobileNetworks));
             btnMobileNetworks.addEventListener('click', () => simulationActive && navigateTo(screenMobileNetworks, btnApn));
