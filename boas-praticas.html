@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boas Práticas - SIM Cards em POS</title>
+    
+    <link rel="icon" type="image/x-icon" href="https://github.com/vmacagnani/api-pre-os/raw/main/favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-300 min-h-screen p-4 sm:p-8">
+    <main class="max-w-4xl mx-auto bg-slate-800 rounded-xl shadow-lg p-6 sm:p-10">
+        <header class="text-center mb-10">
+            <a href="https://avatek.saitro.com/sistema/login/" target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/avatek-m2m/pos-android/main/Avatek-logo-2.svg" alt="Logo Avatek" class="h-12 mx-auto mb-4">
+            </a>
+            <h1 class="text-3xl font-bold text-white">Boas Práticas de Uso de SIM Cards em POS</h1>
+            <p class="text-slate-400 mt-2">Garanta a melhor conectividade, segurança e durabilidade para seus equipamentos.</p>
+        </header>
+
+        <section class="space-y-8">
+            <div>
+                <h2 class="text-2xl font-semibold text-white border-b-2 border-indigo-500 pb-2 mb-4">1. Manuseio Físico e Instalação</h2>
+                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                    <li><strong>Desligue o equipamento:</strong> Sempre desligue completamente o POS antes de inserir ou remover o SIM Card para evitar danos ao chip ou ao leitor.</li>
+                    <li><strong>Evite tocar nos contatos:</strong> Manuseie o SIM Card pelas bordas. A gordura e a eletricidade estática dos dedos podem danificar os contatos dourados.</li>
+                    <li><strong>Posição correta:</strong> Certifique-se de inserir o chip na orientação correta, seguindo a indicação visual no slot do equipamento.</li>
+                    <li><strong>Ambiente limpo:</strong> Instale o chip em um local limpo e seco para evitar que poeira ou umidade entrem no compartimento do SIM Card.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-white border-b-2 border-indigo-500 pb-2 mb-4">2. Configuração e Rede (APN)</h2>
+                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                    <li><strong>Use a APN correta:</strong> A configuração do Ponto de Acesso (APN) é crucial. Utilize sempre os dados fornecidos pela AVATEK para garantir a conexão à rede privada e segura.</li>
+                    <li><strong>Verifique o Roaming:</strong> Se o POS for utilizado em diferentes regiões, certifique-se de que a opção de roaming de dados esteja ativada nas configurações.</li>
+                    <li><strong>Fixação de Rede:</strong> Em alguns casos, pode ser útil fixar a rede em uma tecnologia específica (ex: 4G) se o sinal for estável, evitando que o POS tente se conectar a redes mais lentas.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-white border-b-2 border-indigo-500 pb-2 mb-4">3. Segurança</h2>
+                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                    <li><strong>Segurança física:</strong> Mantenha o compartimento do SIM Card sempre fechado e, se possível, lacrado para evitar a remoção não autorizada do chip.</li>
+                    <li><strong>Plataforma de Gestão:</strong> Utilize a plataforma de gestão AVATEK para monitorar o consumo, a localização, bloquear o chip em caso de perda ou roubo e adicionar informações importantes e customizadas.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-white border-b-2 border-indigo-500 pb-2 mb-4">4. Dicas para POS Android vs. Linux</h2>
+                <p class="mb-3">Embora as práticas acima sejam universais, a forma de acessá-las muda conforme o sistema:</p>
+                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                    <li><strong>POS Android:</strong> As configurações de rede geralmente são encontradas em <code class="bg-slate-700 px-1 rounded">Configurações > Redes e Internet > Rede Móvel > Nomes dos Pontos de Acesso (APN)</code>. O caminho pode variar ligeiramente entre as versões do Android.</li>
+                    <li><strong>POS Linux:</strong> Em sistemas baseados em Linux, o acesso a essas configurações pode não ter uma interface gráfica padrão. Geralmente, a configuração é feita através de menus específicos do software do fabricante do POS ou por arquivos de configuração. Consulte sempre o manual do seu equipamento.</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12">
+            <a href="index.html" class="inline-block bg-slate-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-slate-700 transition-colors">
+                &larr; Voltar ao Simulador
+            </a>
+        </footer>
+    </main>
+</body>
+</html>
