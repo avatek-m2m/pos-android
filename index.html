@@ -9,71 +9,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- CSS do novo botão WhatsApp -->
     <link rel="stylesheet" href="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-button.css">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .screen-view {
-            transition: opacity 0.3s ease-in-out;
-            position: absolute;
-            inset: 0;
-            background-color: #f3f4f6;
-        }
-        .list-item {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 0.5rem;
-            border-bottom-width: 1px;
-            border-color: #d1d5db;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .list-item:hover {
-            background-color: #e5e7eb;
-        }
-        .clickable-item {
-            animation: pulse 2s infinite;
-            border-radius: 0.5rem;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .screen-view { transition: opacity 0.3s ease-in-out; position: absolute; inset: 0; background-color: #f3f4f6; }
+        .list-item { display: flex; align-items: center; padding: 0.75rem 0.5rem; border-bottom-width: 1px; border-color: #d1d5db; cursor: pointer; transition: background-color 0.2s; }
+        .list-item:hover { background-color: #e5e7eb; }
+        .clickable-item { animation: pulse 2s infinite; border-radius: 0.5rem; }
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7); }
             70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
             100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
         }
-        .scan-line {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #00ff00;
-            box-shadow: 0 0 10px #00ff00;
-            animation: scan 3s linear infinite;
-        }
+        .scan-line { position: absolute; left: 0; width: 100%; height: 2px; background: #00ff00; box-shadow: 0 0 10px #00ff00; animation: scan 3s linear infinite; }
         @keyframes scan {
             0% { top: 0; }
             50% { top: 100%; }
             100% { top: 0; }
         }
-        /* Ajuste fino para alinhar verticalmente o botão do WhatsApp com o widget de chat */
-        #robbu-whatsapp-button.left {
-            bottom: 18px; /* O padrão é 20px, este ajuste alinha melhor com o widget da direita */
-        }
+        #robbu-whatsapp-button.left { bottom: 18px; }
     </style>
 </head>
 <body class="bg-slate-900 flex items-center justify-center min-h-screen p-4">
 
     <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl w-full">
-        <!-- Coluna Esquerda: Simulador do POS -->
         <div class="flex justify-center items-center">
-            <!-- Contêiner externo para a borda com gradiente -->
             <div class="w-full max-w-sm mx-auto bg-gradient-to-br from-indigo-500 via-slate-800 to-orange-500 rounded-3xl p-2 shadow-2xl">
-                <!-- Contêiner interno para o corpo do dispositivo -->
                 <div class="w-full h-full bg-gray-800 rounded-[20px] overflow-hidden">
                     <div id="pos-screen" class="h-[600px] relative">
-                        
-                        <!-- Telas da Simulação -->
                         <div id="screen-home" class="screen-view p-4 flex flex-col items-center justify-center text-center">
                             <div id="btn-settings-icon" class="text-center p-2 rounded-lg transition-colors">
                                 <div class="w-16 h-16 bg-gray-500 rounded-2xl flex items-center justify-center mb-1 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div>
@@ -84,23 +47,8 @@
                         <div id="screen-settings" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Configurar</h2><div id="btn-connections" class="list-item"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 8.929a15 15 0 0121.212 0" /></svg><span class="font-medium">Conexões</span></div></div>
                         <div id="screen-connections" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Conexões</h2><div id="btn-mobile-networks" class="list-item"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span class="font-medium">Redes móveis</span></div></div>
                         <div id="screen-mobile-networks" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Redes móveis</h2><div id="btn-apn" class="list-item"><span class="font-medium">Pontos de acesso</span></div></div>
-                        <div id="screen-apn-list" class="screen-view p-2 opacity-0">
-                            <div class="flex justify-between items-center p-2">
-                                 <h2 class="text-xl font-semibold text-gray-800">Pontos de acesso</h2>
-                                 <div class="flex items-center space-x-2">
-                                    <button id="btn-add-apn" class="text-indigo-600 text-3xl font-light p-1 leading-none rounded-md">+</button>
-                                    <button id="btn-more-options" class="text-gray-600 p-1 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg></button>
-                                 </div>
-                            </div>
-                            <div class="p-2 text-center text-gray-500">Nenhum APN configurado.</div>
-                            <div id="menu-scan-qr" class="absolute top-12 right-2 bg-white rounded-md shadow-lg py-1 hidden"><div id="btn-scan-qr" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Escanear QR Code de APN</div></div>
-                            <p id="apn-list-instructions" class="mt-4 text-center text-base p-2 bg-indigo-600 text-white rounded-lg shadow-md hidden">Clique em <span class="font-bold text-white">+</span> para adicionar manualmente ou em <span class="font-bold text-white">⋮</span> para escanear.</p>
-                        </div>
-                        <div id="screen-camera" class="screen-view p-4 opacity-0 flex flex-col items-center justify-center bg-gray-900 text-white">
-                            <p class="mb-4">Aponte para o QR Code</p>
-                            <div class="w-48 h-48 border-4 border-dashed border-gray-400 rounded-lg relative overflow-hidden"><div class="scan-line"></div></div>
-                            <p class="mt-4 text-sm text-gray-400">Simulando leitura...</p>
-                        </div>
+                        <div id="screen-apn-list" class="screen-view p-2 opacity-0"><div class="flex justify-between items-center p-2"><h2 class="text-xl font-semibold text-gray-800">Pontos de acesso</h2><div class="flex items-center space-x-2"><button id="btn-add-apn" class="text-indigo-600 text-3xl font-light p-1 leading-none rounded-md">+</button><button id="btn-more-options" class="text-gray-600 p-1 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg></button></div></div><div class="p-2 text-center text-gray-500">Nenhum APN configurado.</div><div id="menu-scan-qr" class="absolute top-12 right-2 bg-white rounded-md shadow-lg py-1 hidden"><div id="btn-scan-qr" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Escanear QR Code de APN</div></div><p id="apn-list-instructions" class="mt-4 text-center text-base p-2 bg-indigo-600 text-white rounded-lg shadow-md hidden">Clique em <span class="font-bold text-white">+</span> para adicionar manualmente ou em <span class="font-bold text-white">⋮</span> para escanear.</p></div>
+                        <div id="screen-camera" class="screen-view p-4 opacity-0 flex flex-col items-center justify-center bg-gray-900 text-white"><p class="mb-4">Aponte para o QR Code</p><div class="w-48 h-48 border-4 border-dashed border-gray-400 rounded-lg relative overflow-hidden"><div class="scan-line"></div></div><p class="mt-4 text-sm text-gray-400">Simulando leitura...</p></div>
                         <div id="screen-apn-edit" class="screen-view p-2 opacity-0"><div class="flex justify-between items-center p-2"><h2 class="text-xl font-semibold text-gray-800">Editar ponto de acesso</h2><button id="btn-save-apn" class="text-indigo-600 font-semibold px-2 py-1 rounded-md">SALVAR</button></div><div class="space-y-4 text-sm p-2"><div><label class="text-gray-500">Nome</label><input type="text" id="sim-apn-name" class="w-full bg-transparent border-b border-gray-400 focus:outline-none" readonly></div><div><label class="text-gray-500">APN</label><input type="text" id="sim-apn-value" class="w-full bg-transparent border-b border-gray-400 focus:outline-none" readonly></div><div><label class="text-gray-500">Nome de usuário</label><input type="text" id="sim-apn-user" class="w-full bg-transparent border-b border-gray-400 focus:outline-none" readonly></div><div><label class="text-gray-500">Senha</label><input type="text" id="sim-apn-password" class="w-full bg-transparent border-b border-gray-400 focus:outline-none" readonly></div><p class="text-xs text-gray-500 pt-4">* Os outros campos podem ser deixados em branco.</p></div></div>
                         <div id="screen-apn-list-saved" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Pontos de acesso</h2><div class="list-item bg-indigo-100 border-l-4 border-indigo-500"><div class="w-full"><span id="saved-apn-name" class="font-medium text-gray-800">AVATEK</span></div><input type="radio" name="apn-select" checked class="form-radio h-5 w-5 text-indigo-600"></div><p class="mt-4 text-center text-sm text-green-600 font-semibold">APN configurado com sucesso!</p></div>
                     </div>
@@ -108,7 +56,6 @@
             </div>
         </div>
 
-        <!-- Coluna Direita: Controles de Configuração -->
         <div class="w-full bg-slate-800 rounded-xl shadow-lg p-6 sm:p-8 self-center">
             <div class="text-center">
                 <a href="https://avatek.saitro.com/sistema/login/" target="_blank" rel="noopener noreferrer">
@@ -116,22 +63,32 @@
                 </a>
                 <h1 class="text-2xl font-bold text-white mt-2">Simulador de Configuração Android</h1>
                 <p class="text-slate-400 mt-2">Siga a simulação ao lado para configurar o seu POS.</p>
+
+                <div class="mt-6">
+                    <a href="boas-praticas.html" class="inline-block bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
+                        Ver Boas Práticas de Uso do SIM Card
+                    </a>
+                </div>
+
             </div>
             <div class="mt-8 relative">
                 <label for="operator-select-button" class="block text-sm font-medium text-slate-300">1. Selecione a operadora</label>
-                <!-- Botão do Dropdown Customizado -->
-                <button id="operator-select-button" class="mt-2 flex items-center justify-between w-full pl-3 pr-2 py-2 text-base bg-slate-700 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg">
-                    <span id="selected-operator-label" class="flex items-center text-white">
-                        <span class="text-slate-400">Escolha uma operadora...</span>
-                    </span>
-                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </button>
-                <!-- Lista de Opções do Dropdown -->
-                <div id="operator-options" class="absolute z-10 mt-1 w-full bg-slate-700 shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm hidden">
-                    <!-- As opções serão geradas pelo JavaScript -->
+                
+                <div class="mt-2 flex items-center gap-x-2">
+                    <button id="operator-select-button" class="flex items-center justify-between w-full pl-3 pr-2 py-2 text-base bg-slate-700 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg">
+                        <span id="selected-operator-label" class="flex items-center text-white">
+                            <span class="text-slate-400">Escolha uma operadora...</span>
+                        </span>
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <button id="btn-restart-simulation" title="Recomeçar Simulação" class="flex-shrink-0 p-2 text-slate-300 bg-slate-700 border border-slate-600 rounded-lg hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 110 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
                 </div>
+
+                <div id="operator-options" class="absolute z-10 mt-1 w-full bg-slate-700 shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm hidden"></div>
             </div>
             <div id="config-details" class="mt-8 hidden">
                 <h2 class="text-lg font-semibold text-white">2. Dados para configuração</h2>
@@ -151,13 +108,12 @@
         </div>
     </main>
 
-    <!-- Novo Botão Flutuante do WhatsApp -->
     <a id="robbu-whatsapp-button" class="left" target="_blank" href="https://api.whatsapp.com/send?phone=551135884868">
         <img alt="Fale Conosco" src="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-icon.svg">
     </a>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+       document.addEventListener('DOMContentLoaded', () => {
             const configDetails = document.getElementById('config-details');
             const screens = document.querySelectorAll('.screen-view');
             const screenHome = document.getElementById('screen-home');
@@ -190,63 +146,24 @@
             const savedApnName = document.getElementById('saved-apn-name');
             const qrcodeContainer = document.getElementById('qrcode-container');
             const qrcodeImage = document.getElementById('qrcode-image');
-
-            // --- Dropdown Customizado ---
             const operatorSelectButton = document.getElementById('operator-select-button');
             const selectedOperatorLabel = document.getElementById('selected-operator-label');
             const operatorOptions = document.getElementById('operator-options');
+            
+            // ==========================================================
+            // 3. REFERÊNCIA PARA O BOTÃO RECOMEÇAR ADICIONADA AQUI
+            // ==========================================================
+            const btnRestartSimulation = document.getElementById('btn-restart-simulation');
 
-            const operatorInfo = {
-                vivo: { label: 'Vivo', logo: 'https://logo.clearbit.com/vivo.com.br' },
-                claro: { label: 'Claro', logo: 'https://logo.clearbit.com/claro.com.br' },
-                tim: { label: 'TIM', logo: 'https://logo.clearbit.com/tim.com.br' },
-                nlt: { label: 'NLT', logo: 'https://logo.clearbit.com/nlt.com.br' },
-                linksfield: { label: 'Linksfield', logo: 'https://logo.clearbit.com/linksfield.com.br' },
-                emnify: { label: 'Emnify', logo: 'https://logo.clearbit.com/emnify.com' },
-                eseye: { label: 'ESEYE', logo: 'https://logo.clearbit.com/eseye.com.br' },
-                vivo_bl: { label: 'Vivo Banda Larga', logo: 'https://logo.clearbit.com/vivo.com.br' },
-                claro_bl: { label: 'Claro Banda Larga', logo: 'https://logo.clearbit.com/claro.com.br' },
-                tim_bl: { label: 'TIM Banda Larga', logo: 'https://logo.clearbit.com/tim.com.br' }
-            };
-
-            const apnData = {
-                vivo: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' },
-                claro: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' },
-                tim: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' },
-                nlt: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' },
-                linksfield: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' },
-                emnify: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' },
-                eseye: { name: 'AVATEK', apn: 'eseye.com', user: 'user', password: 'pass' },
-                vivo_bl: { name: 'AVATEK', apn: 'avatekbl.br', user: 'avatek', password: 'avatek' },
-                claro_bl: { name: 'AVATEK', apn: 'avatekbl.br', user: 'avatek', password: 'avatek' },
-                tim_bl: { name: 'AVATEK', apn: 'avatekbl.br', user: 'avatek', password: 'avatek' }
-            };
+            const operatorInfo = { vivo: { label: 'Vivo', logo: 'https://logo.clearbit.com/vivo.com.br' }, claro: { label: 'Claro', logo: 'https://logo.clearbit.com/claro.com.br' }, tim: { label: 'TIM', logo: 'https://logo.clearbit.com/tim.com.br' }, nlt: { label: 'NLT', logo: 'https://logo.clearbit.com/nlt.com.br' }, linksfield: { label: 'Linksfield', logo: 'https://logo.clearbit.com/linksfield.com.br' }, emnify: { label: 'Emnify', logo: 'https://logo.clearbit.com/emnify.com' }, eseye: { label: 'ESEYE', logo: 'https://logo.clearbit.com/eseye.com.br' }, vivo_bl: { label: 'Vivo Banda Larga', logo: 'https://logo.clearbit.com/vivo.com.br' }, claro_bl: { label: 'Claro Banda Larga', logo: 'https://logo.clearbit.com/claro.com.br' }, tim_bl: { label: 'TIM Banda Larga', logo: 'https://logo.clearbit.com/tim.com.br' } };
+            const apnData = { vivo: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, claro: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, tim: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, nlt: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, linksfield: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, emnify: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, eseye: { name: 'AVATEK', apn: 'eseye.com', user: 'user', password: 'pass' }, vivo_bl: { name: 'AVATEK', apn: 'avatekbl.br', user: 'avatek', password: 'avatek' }, claro_bl: { name: 'AVATEK', apn: 'avatekbl.br', user: 'avatek', password: 'avatek' }, tim_bl: { name: 'AVATEK', apn: 'avatekbl.br', user: 'avatek', password: 'avatek' } };
 
             let currentApnData = null;
             let simulationActive = false;
             let activeClickableElements = [];
 
-            function highlightElements(elements) {
-                activeClickableElements.forEach(el => el.classList.remove('clickable-item'));
-                activeClickableElements = [];
-                if (elements) {
-                    const elementsArray = Array.isArray(elements) ? elements : [elements];
-                    elementsArray.forEach(el => {
-                        el.classList.add('clickable-item');
-                        activeClickableElements.push(el);
-                    });
-                }
-            }
-
-            function navigateTo(screenToShow, nextClickableElements) {
-                screens.forEach(screen => {
-                    screen.style.opacity = '0';
-                    screen.style.pointerEvents = 'none';
-                });
-                screenToShow.style.opacity = '1';
-                screenToShow.style.pointerEvents = 'auto';
-                highlightElements(nextClickableElements);
-            }
+            function highlightElements(elements) { activeClickableElements.forEach(el => el.classList.remove('clickable-item')); activeClickableElements = []; if (elements) { const elementsArray = Array.isArray(elements) ? elements : [elements]; elementsArray.forEach(el => { el.classList.add('clickable-item'); activeClickableElements.push(el); }); } }
+            function navigateTo(screenToShow, nextClickableElements) { screens.forEach(screen => { screen.style.opacity = '0'; screen.style.pointerEvents = 'none'; }); screenToShow.style.opacity = '1'; screenToShow.style.pointerEvents = 'auto'; highlightElements(nextClickableElements); }
 
             function resetSimulation() {
                 navigateTo(screenHome, null);
@@ -262,144 +179,49 @@
                 selectedOperatorLabel.innerHTML = `<span class="text-slate-400">Escolha uma operadora...</span>`;
             }
 
-            function handleOperatorSelection(operatorKey) {
-                resetSimulation();
-                if (operatorKey && apnData[operatorKey]) {
-                    currentApnData = apnData[operatorKey];
-                    simulationActive = true;
-                    
-                    btnSettingsIcon.style.cursor = 'pointer';
-                    btnSettingsIcon.firstElementChild.classList.add('bg-indigo-500');
-                    btnSettingsIcon.firstElementChild.classList.remove('bg-gray-500');
-                    homeMessage.textContent = 'Clique no ícone "Configurar" para começar.';
-                    highlightElements(btnSettingsIcon);
+            function handleOperatorSelection(operatorKey) { resetSimulation(); if (operatorKey && apnData[operatorKey]) { currentApnData = apnData[operatorKey]; simulationActive = true; btnSettingsIcon.style.cursor = 'pointer'; btnSettingsIcon.firstElementChild.classList.add('bg-indigo-500'); btnSettingsIcon.firstElementChild.classList.remove('bg-gray-500'); homeMessage.textContent = 'Clique no ícone "Configurar" para começar.'; highlightElements(btnSettingsIcon); apnName.textContent = currentApnData.name; apnValue.textContent = currentApnData.apn; apnUser.textContent = currentApnData.user; apnPassword.textContent = currentApnData.password; configDetails.classList.remove('hidden'); const isEseye = operatorKey === 'eseye'; const qrCodeUrl = isEseye ? 'https://raw.githubusercontent.com/vmacagnani/pos-android/main/QRCodeESEYE.jpg' : 'https://raw.githubusercontent.com/vmacagnani/pos-android/main/QRCode1.jpeg'; qrcodeImage.src = qrCodeUrl; qrcodeContainer.classList.remove('hidden'); const info = operatorInfo[operatorKey]; selectedOperatorLabel.innerHTML = `<img src="${info.logo}" alt="${info.label}" class="h-5 w-5 mr-2 rounded-full" onerror="this.style.display='none'"><span>${info.label}</span>`; } }
 
-                    apnName.textContent = currentApnData.name;
-                    apnValue.textContent = currentApnData.apn;
-                    apnUser.textContent = currentApnData.user;
-                    apnPassword.textContent = currentApnData.password;
-                    configDetails.classList.remove('hidden');
-
-                    const isEseye = operatorKey === 'eseye';
-                    const qrCodeUrl = isEseye
-                        ? 'https://raw.githubusercontent.com/vmacagnani/pos-android/main/QRCodeESEYE.jpg'
-                        : 'https://raw.githubusercontent.com/vmacagnani/pos-android/main/QRCode1.jpeg';
-                    
-                    qrcodeImage.src = qrCodeUrl;
-                    qrcodeContainer.classList.remove('hidden');
-
-                    const info = operatorInfo[operatorKey];
-                    selectedOperatorLabel.innerHTML = `
-                        <img src="${info.logo}" alt="${info.label}" class="h-5 w-5 mr-2 rounded-full" onerror="this.style.display='none'">
-                        <span>${info.label}</span>`;
-                }
-            }
-
-            // --- Inicialização ---
             resetSimulation();
-
-            // Adicionar a opção de reset
             const resetOption = document.createElement('div');
             resetOption.classList.add('px-4', 'py-2', 'hover:bg-slate-600', 'cursor-pointer', 'flex', 'items-center');
             resetOption.innerHTML = `<span class="text-slate-400">Escolha uma operadora...</span>`;
-            resetOption.addEventListener('click', () => {
-                resetSimulation();
-                operatorOptions.classList.add('hidden');
-            });
+            resetOption.addEventListener('click', () => { resetSimulation(); operatorOptions.classList.add('hidden'); });
             operatorOptions.appendChild(resetOption);
-
-            // Gerar opções do dropdown
             Object.keys(operatorInfo).forEach(key => {
                 const info = operatorInfo[key];
                 const optionElement = document.createElement('div');
                 optionElement.classList.add('px-4', 'py-2', 'hover:bg-slate-600', 'cursor-pointer', 'flex', 'items-center');
                 optionElement.dataset.value = key;
-                optionElement.innerHTML = `
-                    <img src="${info.logo}" alt="${info.label}" class="h-5 w-5 mr-2 rounded-full" onerror="this.style.display='none'">
-                    <span class="text-slate-200">${info.label}</span>
-                `;
-                optionElement.addEventListener('click', () => {
-                    handleOperatorSelection(key);
-                    operatorOptions.classList.add('hidden');
-                });
+                optionElement.innerHTML = `<img src="${info.logo}" alt="${info.label}" class="h-5 w-5 mr-2 rounded-full" onerror="this.style.display='none'"><span class="text-slate-200">${info.label}</span>`;
+                optionElement.addEventListener('click', () => { handleOperatorSelection(key); operatorOptions.classList.add('hidden'); });
                 operatorOptions.appendChild(optionElement);
             });
 
-            operatorSelectButton.addEventListener('click', () => {
-                operatorOptions.classList.toggle('hidden');
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!operatorSelectButton.contains(e.target) && !operatorOptions.contains(e.target)) {
-                    operatorOptions.classList.add('hidden');
-                }
-            });
-
-            // --- Navegação da Simulação ---
+            // =================================================================
+            // 4. EVENTO DE CLIQUE DO BOTÃO RECOMEÇAR ADICIONADO AQUI
+            // =================================================================
+            btnRestartSimulation.addEventListener('click', resetSimulation);
+            
+            operatorSelectButton.addEventListener('click', () => { operatorOptions.classList.toggle('hidden'); });
+            document.addEventListener('click', (e) => { if (!operatorSelectButton.contains(e.target) && !operatorOptions.contains(e.target)) { operatorOptions.classList.add('hidden'); } });
             btnSettingsIcon.addEventListener('click', () => simulationActive && navigateTo(screenSettings, btnConnections));
             btnConnections.addEventListener('click', () => simulationActive && navigateTo(screenConnections, btnMobileNetworks));
             btnMobileNetworks.addEventListener('click', () => simulationActive && navigateTo(screenMobileNetworks, btnApn));
-            btnApn.addEventListener('click', () => {
-                if (simulationActive) {
-                    navigateTo(screenApnList, [btnAddApn, btnMoreOptions]);
-                    apnListInstructions.classList.remove('hidden');
-                }
-            });
-            
-            btnMoreOptions.addEventListener('click', (e) => {
-                if (simulationActive) {
-                    e.stopPropagation();
-                    apnListInstructions.classList.add('hidden');
-                    menuScanQr.classList.toggle('hidden');
-                    highlightElements(btnScanQr);
-                }
-            });
-
-            btnScanQr.addEventListener('click', () => {
-                if(simulationActive) {
-                    menuScanQr.classList.add('hidden');
-                    navigateTo(screenCamera, null);
-                    setTimeout(() => {
-                        if (currentApnData) {
-                            simApnName.value = currentApnData.name;
-                            simApnValue.value = currentApnData.apn;
-                            simApnUser.value = currentApnData.user;
-                            simApnPassword.value = currentApnData.password;
-                            navigateTo(screenApnEdit, btnSaveApn);
-                        }
-                    }, 2500);
-                }
-            });
-
-            btnAddApn.addEventListener('click', () => {
-                if (simulationActive && currentApnData) {
-                    apnListInstructions.classList.add('hidden');
-                    simApnName.value = currentApnData.name;
-                    simApnValue.value = currentApnData.apn;
-                    simApnUser.value = currentApnData.user;
-                    simApnPassword.value = currentApnData.password;
-                    navigateTo(screenApnEdit, btnSaveApn);
-                }
-            });
-
-            btnSaveApn.addEventListener('click', () => {
-                if (simulationActive && currentApnData) {
-                    savedApnName.textContent = currentApnData.name;
-                    navigateTo(screenApnListSaved, null);
-                }
-            });
-
+            btnApn.addEventListener('click', () => { if (simulationActive) { navigateTo(screenApnList, [btnAddApn, btnMoreOptions]); apnListInstructions.classList.remove('hidden'); } });
+            btnMoreOptions.addEventListener('click', (e) => { if (simulationActive) { e.stopPropagation(); apnListInstructions.classList.add('hidden'); menuScanQr.classList.toggle('hidden'); highlightElements(btnScanQr); } });
+            btnScanQr.addEventListener('click', () => { if(simulationActive) { menuScanQr.classList.add('hidden'); navigateTo(screenCamera, null); setTimeout(() => { if (currentApnData) { simApnName.value = currentApnData.name; simApnValue.value = currentApnData.apn; simApnUser.value = currentApnData.user; simApnPassword.value = currentApnData.password; navigateTo(screenApnEdit, btnSaveApn); } }, 2500); } });
+            btnAddApn.addEventListener('click', () => { if (simulationActive && currentApnData) { apnListInstructions.classList.add('hidden'); simApnName.value = currentApnData.name; simApnValue.value = currentApnData.apn; simApnUser.value = currentApnData.user; simApnPassword.value = currentApnData.password; navigateTo(screenApnEdit, btnSaveApn); } });
+            btnSaveApn.addEventListener('click', () => { if (simulationActive && currentApnData) { savedApnName.textContent = currentApnData.name; navigateTo(screenApnListSaved, null); } });
             document.addEventListener('click', () => menuScanQr.classList.add('hidden'));
         });
     </script>
     
-    <!-- Script do Freshchat -->
     <script>
       function initFreshChat() {
         window.fcWidget.init({
-             token: "b7330e8b-d5ef-4e3f-902d-3054c18af687",
-         host: "https://avatek.freshchat.com",
-         widgetUuid: "26783e22-e386-42cf-bce5-82fa748c4373"
+            token: "b7330e8b-d5ef-4e3f-902d-3054c18af687",
+            host: "https://avatek.freshchat.com",
+            widgetUuid: "26783e22-e386-42cf-bce5-82fa748c4373"
         });
       }
       function initialize(i,t){var e;i.getElementById(t)?
