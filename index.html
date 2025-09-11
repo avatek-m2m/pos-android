@@ -28,6 +28,18 @@
             100% { top: 0; }
         }
         #robbu-whatsapp-button.left { bottom: 18px; }
+
+        /* Estilo para o logo de fundo */
+        #background-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%; /* Ajuste o tamanho conforme necessário */
+            max-width: 200px; /* Limita o tamanho máximo */
+            opacity: 0.1; /* Transparência do logo */
+            z-index: 0; /* Garante que fique no fundo */
+        }
     </style>
 </head>
 <body class="bg-slate-900 flex items-center justify-center min-h-screen p-4">
@@ -37,6 +49,8 @@
             <div class="w-full max-w-sm mx-auto bg-gradient-to-br from-indigo-500 via-slate-800 to-orange-500 rounded-3xl p-2 shadow-2xl">
                 <div class="w-full h-full bg-gray-800 rounded-[20px] overflow-hidden">
                     <div id="pos-screen" class="h-[600px] relative">
+                        <img id="background-logo" src="https://raw.githubusercontent.com/avatek-m2m/pos-android/main/Avatek-logo-2.svg" alt="Logo Avatek Fundo">
+
                         <div id="screen-home" class="screen-view p-4 flex flex-col items-center justify-center text-center">
                             <div id="btn-settings-icon" class="text-center p-2 rounded-lg transition-colors">
                                 <div class="w-16 h-16 bg-gray-500 rounded-2xl flex items-center justify-center mb-1 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div>
@@ -149,10 +163,6 @@
             const operatorSelectButton = document.getElementById('operator-select-button');
             const selectedOperatorLabel = document.getElementById('selected-operator-label');
             const operatorOptions = document.getElementById('operator-options');
-            
-            // ==========================================================
-            // 3. REFERÊNCIA PARA O BOTÃO RECOMEÇAR ADICIONADA AQUI
-            // ==========================================================
             const btnRestartSimulation = document.getElementById('btn-restart-simulation');
 
             const operatorInfo = { vivo: { label: 'Vivo', logo: 'https://logo.clearbit.com/vivo.com.br' }, claro: { label: 'Claro', logo: 'https://logo.clearbit.com/claro.com.br' }, tim: { label: 'TIM', logo: 'https://logo.clearbit.com/tim.com.br' }, nlt: { label: 'NLT', logo: 'https://logo.clearbit.com/nlt.com.br' }, linksfield: { label: 'Linksfield', logo: 'https://logo.clearbit.com/linksfield.com.br' }, emnify: { label: 'Emnify', logo: 'https://logo.clearbit.com/emnify.com' }, eseye: { label: 'ESEYE', logo: 'https://logo.clearbit.com/eseye.com.br' }, vivo_bl: { label: 'Vivo Banda Larga', logo: 'https://logo.clearbit.com/vivo.com.br' }, claro_bl: { label: 'Claro Banda Larga', logo: 'https://logo.clearbit.com/claro.com.br' }, tim_bl: { label: 'TIM Banda Larga', logo: 'https://logo.clearbit.com/tim.com.br' } };
@@ -197,9 +207,6 @@
                 operatorOptions.appendChild(optionElement);
             });
 
-            // =================================================================
-            // 4. EVENTO DE CLIQUE DO BOTÃO RECOMEÇAR ADICIONADO AQUI
-            // =================================================================
             btnRestartSimulation.addEventListener('click', resetSimulation);
             
             operatorSelectButton.addEventListener('click', () => { operatorOptions.classList.toggle('hidden'); });
