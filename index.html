@@ -12,9 +12,19 @@
     <link rel="stylesheet" href="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-button.css">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .screen-view { transition: opacity 0.3s ease-in-out; position: absolute; inset: 0; background-color: #f3f4f6; }
+        
+        /* ========================================================== */
+        /* 1. FUNDO DO SIMULADOR LEVEMENTE ESCURECIDO AQUI            */
+        /* ========================================================== */
+        .screen-view { 
+            transition: opacity 0.3s ease-in-out; 
+            position: absolute; 
+            inset: 0; 
+            background-color: #e5e7eb; /* Alterado de gray-100 para gray-200 */
+        }
+        
         .list-item { display: flex; align-items: center; padding: 0.75rem 0.5rem; border-bottom-width: 1px; border-color: #d1d5db; cursor: pointer; transition: background-color 0.2s; }
-        .list-item:hover { background-color: #e5e7eb; }
+        .list-item:hover { background-color: #d1d5db; } /* Cor do hover ajustada */
         .clickable-item { animation: pulse 2s infinite; border-radius: 0.5rem; }
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7); }
@@ -29,16 +39,23 @@
         }
         #robbu-whatsapp-button.left { bottom: 18px; }
 
-        /* Estilo para o logo de fundo */
-        #background-logo {
+        /* ========================================================== */
+        /* 2. ESTILO PARA O LOGO DA AVATEK ADICIONADO AQUI            */
+        /* ========================================================== */
+        #home-screen-logo {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 80%; /* Ajuste o tamanho conforme necessário */
-            max-width: 200px; /* Limita o tamanho máximo */
-            opacity: 0.1; /* Transparência do logo */
-            z-index: 0; /* Garante que fique no fundo */
+            width: 200px;
+            height: auto;
+            opacity: 0.3; /* Opacidade ajustada para boa visualização */
+            z-index: 1;
+        }
+        /* Garante que o conteúdo da tela fique na FRENTE do logo */
+        #btn-settings-icon, #home-message {
+            position: relative;
+            z-index: 10;
         }
     </style>
 </head>
@@ -49,16 +66,18 @@
             <div class="w-full max-w-sm mx-auto bg-gradient-to-br from-indigo-500 via-slate-800 to-orange-500 rounded-3xl p-2 shadow-2xl">
                 <div class="w-full h-full bg-gray-800 rounded-[20px] overflow-hidden">
                     <div id="pos-screen" class="h-[600px] relative">
-                        <img id="background-logo" src="https://raw.githubusercontent.com/avatek-m2m/pos-android/main/Avatek-logo-2.svg" alt="Logo Avatek Fundo">
-
+                        
                         <div id="screen-home" class="screen-view p-4 flex flex-col items-center justify-center text-center">
+                            
+                            <img src="https://raw.githubusercontent.com/avatek-m2m/pos-android/main/Avatek-logo-2.svg" alt="Avatek Logo" id="home-screen-logo">
+
                             <div id="btn-settings-icon" class="text-center p-2 rounded-lg transition-colors">
                                 <div class="w-16 h-16 bg-gray-500 rounded-2xl flex items-center justify-center mb-1 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div>
                                 <span class="text-sm text-gray-700">Configurar</span>
                             </div>
                             <p id="home-message" class="mt-8 text-gray-500">Selecione uma operadora ao lado para iniciar.</p>
                         </div>
-                        <div id="screen-settings" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Configurar</h2><div id="btn-connections" class="list-item"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 8.929a15 15 0 0121.212 0" /></svg><span class="font-medium">Conexões</span></div></div>
+                        <div id="screen-settings" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Configurar</h2><div id="btn-connections" class="list-item"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 011.4142 0M1.394 8.929a15 15 0 0121.212 0" /></svg><span class="font-medium">Conexões</span></div></div>
                         <div id="screen-connections" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Conexões</h2><div id="btn-mobile-networks" class="list-item"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span class="font-medium">Redes móveis</span></div></div>
                         <div id="screen-mobile-networks" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Redes móveis</h2><div id="btn-apn" class="list-item"><span class="font-medium">Pontos de acesso</span></div></div>
                         <div id="screen-apn-list" class="screen-view p-2 opacity-0"><div class="flex justify-between items-center p-2"><h2 class="text-xl font-semibold text-gray-800">Pontos de acesso</h2><div class="flex items-center space-x-2"><button id="btn-add-apn" class="text-indigo-600 text-3xl font-light p-1 leading-none rounded-md">+</button><button id="btn-more-options" class="text-gray-600 p-1 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg></button></div></div><div class="p-2 text-center text-gray-500">Nenhum APN configurado.</div><div id="menu-scan-qr" class="absolute top-12 right-2 bg-white rounded-md shadow-lg py-1 hidden"><div id="btn-scan-qr" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Escanear QR Code de APN</div></div><p id="apn-list-instructions" class="mt-4 text-center text-base p-2 bg-indigo-600 text-white rounded-lg shadow-md hidden">Clique em <span class="font-bold text-white">+</span> para adicionar manualmente ou em <span class="font-bold text-white">⋮</span> para escanear.</p></div>
@@ -83,7 +102,6 @@
                         Ver Boas Práticas de Uso do SIM Card
                     </a>
                 </div>
-
             </div>
             <div class="mt-8 relative">
                 <label for="operator-select-button" class="block text-sm font-medium text-slate-300">1. Selecione a operadora</label>
