@@ -16,7 +16,7 @@
             transition: opacity 0.3s ease-in-out; 
             position: absolute; 
             inset: 0; 
-            background-color: #ffffff; /* Fundo branco */
+            background-color: #ffffff; /* Fundo branco mantido */
         }
         .list-item { display: flex; align-items: center; padding: 0.75rem 0.5rem; border-bottom-width: 1px; border-color: #e5e7eb; cursor: pointer; transition: background-color 0.2s; }
         .list-item:hover { background-color: #f3f4f6; }
@@ -40,7 +40,7 @@
             transform: translate(-50%, -50%);
             width: 200px;
             height: auto;
-            opacity: 0.15;
+            opacity: 0.15; /* Opacidade mantida */
             z-index: 1;
         }
         #btn-settings-icon, #home-message {
@@ -54,11 +54,10 @@
     <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl w-full">
         <div class="flex justify-center items-center">
             <div class="w-full max-w-sm mx-auto bg-gradient-to-br from-indigo-500 via-slate-800 to-orange-500 rounded-3xl p-2 shadow-2xl">
-                <div class="w-full h-full bg-gray-800 rounded-[20px] overflow-hidden">
+                <div class="w-full h-full bg-gray-100 rounded-[20px] overflow-hidden">
                     <div id="pos-screen" class="h-[600px] relative">
                         
                         <div id="screen-home" class="screen-view p-4 flex flex-col items-center justify-center text-center">
-                            
                             <img src="https://raw.githubusercontent.com/avatek-m2m/pos-android/main/logo-avatek-azul-laranja.svg" alt="Avatek Logo" id="home-screen-logo">
 
                             <div id="btn-settings-icon" class="text-center p-2 rounded-lg transition-colors">
@@ -67,15 +66,7 @@
                             </div>
                             <p id="home-message" class="mt-8 text-gray-500">Selecione uma operadora ao lado para iniciar.</p>
                         </div>
-                        <div id="screen-settings" class="screen-view p-2 opacity-0">
-                            <h2 class="text-xl font-semibold p-2 text-gray-800">Configurar</h2>
-                            <div id="btn-connections" class="list-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 8.929a15 15 0 0121.212 0" />
-                                </svg>
-                                <span class="font-medium">Conexões</span>
-                            </div>
-                        </div>
+                        <div id="screen-settings" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Configurar</h2><div id="btn-connections" class="list-item"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 8.929a15 15 0 0121.212 0" /></svg><span class="font-medium">Conexões</span></div></div>
                         <div id="screen-connections" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Conexões</h2><div id="btn-mobile-networks" class="list-item"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span class="font-medium">Redes móveis</span></div></div>
                         <div id="screen-mobile-networks" class="screen-view p-2 opacity-0"><h2 class="text-xl font-semibold p-2 text-gray-800">Redes móveis</h2><div id="btn-apn" class="list-item"><span class="font-medium">Pontos de acesso</span></div></div>
                         <div id="screen-apn-list" class="screen-view p-2 opacity-0"><div class="flex justify-between items-center p-2"><h2 class="text-xl font-semibold text-gray-800">Pontos de acesso</h2><div class="flex items-center space-x-2"><button id="btn-add-apn" class="text-indigo-600 text-3xl font-light p-1 leading-none rounded-md">+</button><button id="btn-more-options" class="text-gray-600 p-1 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg></button></div></div><div class="p-2 text-center text-gray-500">Nenhum APN configurado.</div><div id="menu-scan-qr" class="absolute top-12 right-2 bg-white rounded-md shadow-lg py-1 hidden"><div id="btn-scan-qr" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Escanear QR Code de APN</div></div><p id="apn-list-instructions" class="mt-4 text-center text-base p-2 bg-indigo-600 text-white rounded-lg shadow-md hidden">Clique em <span class="font-bold text-white">+</span> para adicionar manualmente ou em <span class="font-bold text-white">⋮</span> para escanear.</p></div>
@@ -100,16 +91,21 @@
                         Ver Boas Práticas
                     </a>
                     <a href="index-linux.html" class="inline-flex items-center justify-center w-full sm:w-auto bg-slate-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-slate-600 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M6 16h.01" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M6 16h.01" />
+                        </svg>
                         Ir para Simulador Linux
                     </a>
                 </div>
+
             </div>
             <div class="mt-8 relative">
                 <label for="operator-select-button" class="block text-sm font-medium text-slate-300">1. Selecione a operadora</label>
                 <div class="mt-2 flex items-center gap-x-2">
                     <button id="operator-select-button" class="flex items-center justify-between w-full pl-3 pr-2 py-2 text-base bg-slate-700 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg">
-                        <span id="selected-operator-label" class="flex items-center text-white"><span class="text-slate-400">Escolha uma operadora...</span></span>
+                        <span id="selected-operator-label" class="flex items-center text-white">
+                            <span class="text-slate-400">Escolha uma operadora...</span>
+                        </span>
                         <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                     </button>
                     <button id="btn-restart-simulation" title="Recomeçar Simulação" class="flex-shrink-0 p-2 text-slate-300 bg-slate-700 border border-slate-600 rounded-lg hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors">
@@ -141,7 +137,7 @@
     </a>
     
     <script>
-       document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const configDetails = document.getElementById('config-details');
             const screens = document.querySelectorAll('.screen-view');
             const screenHome = document.getElementById('screen-home');
@@ -178,11 +174,8 @@
             const selectedOperatorLabel = document.getElementById('selected-operator-label');
             const operatorOptions = document.getElementById('operator-options');
             const btnRestartSimulation = document.getElementById('btn-restart-simulation');
-            
             const operatorInfo = { vivo: { label: 'Vivo', logo: 'https://logo.clearbit.com/vivo.com.br' }, claro: { label: 'Claro', logo: 'https://logo.clearbit.com/claro.com.br' }, tim: { label: 'TIM', logo: 'https://logo.clearbit.com/tim.com.br' }, nlt: { label: 'NLT', logo: 'https://logo.clearbit.com/nlt.com.br' }, linksfield: { label: 'Linksfield', logo: 'https://logo.clearbit.com/linksfield.com.br' }, emnify: { label: 'Emnify', logo: 'https://logo.clearbit.com/emnify.com' }, eseye: { label: 'ESEYE', logo: 'https://logo.clearbit.com/eseye.com.br' }, vivo_bl: { label: 'Vivo Banda Larga', logo: 'https://logo.clearbit.com/vivo.com.br' }, claro_bl: { label: 'Claro Banda Larga', logo: 'https://logo.clearbit.com/claro.com.br' }, tim_bl: { label: 'TIM Banda Larga', logo: 'https://logo.clearbit.com/tim.com.br' } };
             const apnData = { vivo: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, claro: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, tim: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, nlt: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, linksfield: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, emnify: { name: 'AVATEK', apn: 'avatek.br', user: 'avatek', password: 'avatek' }, eseye: { name: 'AVATEK', apn: 'eseye.com', user: 'user', password: 'pass' }, vivo_bl: { name: 'AVATEK', apn: 'avatekbl.br', user: 'avatek', password: 'avatek' }, claro_bl: { name: 'AVATEK', apn: 'avatekbl.br', user: 'avatek', password: 'avatek' }, tim_bl: { name: 'AVATEK', apn: 'avatekbl.br', user: 'avatek', password: 'avatek' } };
-            
-            
             let currentApnData = null;
             let simulationActive = false;
             let activeClickableElements = [];
@@ -201,7 +194,7 @@
                 homeMessage.textContent = 'Selecione uma operadora ao lado para iniciar a simulação.';
                 selectedOperatorLabel.innerHTML = `<span class="text-slate-400">Escolha uma operadora...</span>`;
             }
-            function handleOperatorSelection(operatorKey) { resetSimulation(); if (operatorKey && apnData[operatorKey]) { currentApnData = apnData[operatorKey]; simulationActive = true; btnSettingsIcon.style.cursor = 'pointer'; btnSettingsIcon.firstElementChild.classList.add('bg-indigo-500'); btnSettingsIcon.firstElementChild.classList.remove('bg-gray-500'); homeMessage.textContent = 'Clique no ícone "Configurar" para começar.'; highlightElements(btnSettingsIcon); apnName.textContent = currentApnData.name; apnValue.textContent = currentApnData.apn; apnUser.textContent = currentApnData.user; apnPassword.textContent = currentApnData.password; configDetails.classList.remove('hidden'); const qrCodeUrl = 'https://raw.githubusercontent.com/vmacagnani/pos-android/main/QRCode1.jpeg'; qrcodeImage.src = qrCodeUrl; qrcodeContainer.classList.remove('hidden'); const info = operatorInfo[operatorKey]; selectedOperatorLabel.innerHTML = `<img src="${info.logo}" alt="${info.label}" class="h-5 w-5 mr-2 rounded-full" onerror="this.style.display='none'"><span>${info.label}</span>`; } }
+            function handleOperatorSelection(operatorKey) { resetSimulation(); if (operatorKey && apnData[operatorKey]) { currentApnData = apnData[operatorKey]; simulationActive = true; btnSettingsIcon.style.cursor = 'pointer'; btnSettingsIcon.firstElementChild.classList.add('bg-indigo-500'); btnSettingsIcon.firstElementChild.classList.remove('bg-gray-500'); homeMessage.textContent = 'Clique no ícone "Configurar" para começar.'; highlightElements(btnSettingsIcon); apnName.textContent = currentApnData.name; apnValue.textContent = currentApnData.apn; apnUser.textContent = currentApnData.user; apnPassword.textContent = currentApnData.password; configDetails.classList.remove('hidden'); const isEseye = operatorKey === 'eseye'; const qrCodeUrl = isEseye ? 'https://raw.githubusercontent.com/vmacagnani/pos-android/main/QRCodeESEYE.jpg' : 'https://raw.githubusercontent.com/vmacagnani/pos-android/main/QRCode1.jpeg'; qrcodeImage.src = qrCodeUrl; qrcodeContainer.classList.remove('hidden'); const info = operatorInfo[operatorKey]; selectedOperatorLabel.innerHTML = `<img src="${info.logo}" alt="${info.label}" class="h-5 w-5 mr-2 rounded-full" onerror="this.style.display='none'"><span>${info.label}</span>`; } }
             resetSimulation();
             const resetOption = document.createElement('div');
             resetOption.classList.add('px-4', 'py-2', 'hover:bg-slate-600', 'cursor-pointer', 'flex', 'items-center');
