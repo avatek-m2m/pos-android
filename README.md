@@ -1,1 +1,1 @@
-Este é um Mini App Avatek para simulação de de configuração Android
+Este é um Mini App Avatek para simulação de configuração Android
